@@ -1,0 +1,15 @@
+[Unit]
+Description=AirPy Server
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+User=www-data
+Type=simple
+Restart=always
+RestartSec=5
+WorkingDirectory=/srv/AirPy/server
+ExecStart=/usr/local/bin/gunicorn --bind 0.0.0.0:8090 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
