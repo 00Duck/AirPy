@@ -50,7 +50,7 @@ The most basic form of Gunicorn can be run using the following command. Please n
 
 You may test using this command to ensure the server starts correctly with Gunicorn. Also note the port in case you decide to change it later.
 
-Create a Service in `/etc/systemd/system` called airpy.service with the following details. Note that the below gunicorn
+Create a Service in `/etc/systemd/system` called airpy.service with the following details.
 
 ```ini
 [Unit]
