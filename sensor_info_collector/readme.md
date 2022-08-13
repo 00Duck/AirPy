@@ -1,3 +1,7 @@
+# Installation Instructions
+
+This folder is its own Python program and can be separated from the ../server folder.
+
 Install prerequisite software:
 
 `sudo apt update && sudo apt install git python3-venv`
