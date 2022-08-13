@@ -22,8 +22,8 @@ class DB:
         try:
             self.cur.execute("""CREATE TABLE IF NOT EXISTS sensor (
             id int auto_increment primary key,
-            pm_two_five varchar(20) charset utf8,
-            pm_ten varchar(20) charset utf8,
+            pm_two_five float,
+            pm_ten float,
             measured_at DATETIME
             ) engine=InnoDB default charset utf8;
             """)
@@ -40,6 +40,9 @@ class DB:
     def retrieve_data(self) -> pd.DataFrame:
         try:
             df = pd.read_sql(sql="SELECT id, pm_two_five, pm_ten, measured_at FROM sensor ORDER BY measured_at DESC;", con=self.conn, parse_dates=["measured_at"])
+            # Seems hackish. I found this solution to convert the times to ET from UTC. This allows me to modify the data with tz_convert
+            # Instead of modifying the index (which is how tz_convert normally works)
+            df['measured_at'] = pd.to_datetime(df['measured_at']).dt.tz_localize('UTC').dt.tz_convert('US/Eastern')
             return df
         except mariadb.Error as e:
             print("Database getData error: ", str(e))
