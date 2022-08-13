@@ -16,12 +16,12 @@ def root_path():
         # Information on AQI breakpoints taken from https://www.epa.gov/sites/default/files/2016-04/documents/2012_aqi_factsheet.pdf
         # As this is designed for indoor use, I have omitted the following breakpoints:
         # Very Unhealthy (purple-ish?) 150.5 - 250.4
-        # Hazardout (dark red) 250.5 - 500
+        # Hazardous (dark red) 250.5 - 500
         fig.add_hrect(y0=0, y1=12, fillcolor="lightgreen", opacity=0.4, line_width=0) # Good
         fig.add_hrect(y0=12.1, y1=35.4, fillcolor="yellow", opacity=0.3, line_width=0) # Moderate
         fig.add_hrect(y0=35.5, y1=55.4, fillcolor="orange", opacity=0.4, line_width=0) # Unhealthy for Sensitive Groups
         fig.add_hrect(y0=55.5, y1=75, fillcolor="red", opacity=0.4, line_width=0) # Unhealthy. Actual range  55.5 - 150.4
-        
+
         #Aug 12 \n 04:00 PM
         fig.update_xaxes(tickformat="%b %d\n%I:%M %p")
 
